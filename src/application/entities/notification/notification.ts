@@ -1,5 +1,5 @@
-import { Replace } from "../../helpers/Replace";
-import { Content } from "./content";
+import { Replace } from "@helpers/Replace"
+import { Content } from "../content/content"
 
 export interface NotificationProps {
   id?: string
@@ -8,6 +8,7 @@ export interface NotificationProps {
   category: string
   readed?: Date | null
   created: Date
+  canceled?: Date | null
 }
 
 export class Notification {
@@ -58,5 +59,13 @@ export class Notification {
 
   public get created(): Date {
     return this.props.created
+  }
+
+  public get canceled(): Date | null | undefined {
+    return this.props.canceled
+  }
+
+  public cancel() {
+    this.props.canceled = new Date()
   }
 }

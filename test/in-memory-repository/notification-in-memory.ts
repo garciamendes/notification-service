@@ -30,4 +30,10 @@ export class NotificationInMemoryRepository implements NotificationRepository {
 
     return countNotifications
   }
+
+  async findManyByRecipientId(recipientId: string) {
+    const notifications = this.notifications.filter(notification => notification.recipientId === recipientId)
+
+    return notifications
+  }
 }

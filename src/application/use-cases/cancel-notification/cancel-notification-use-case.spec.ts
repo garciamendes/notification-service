@@ -2,7 +2,7 @@ import { NotificationInMemoryRepository } from "@test/in-memory-repository/notif
 import { CancelNotificationUseCase } from "./cancel-notification-use-case"
 import { Content } from "@application/entities/content/content"
 import { Notification } from "@application/entities/notification/notification"
-import { NotificationNotFoundError } from "../errors/notification-not-found-error"
+import { NotificationNotFoundError } from "../../../utils/errors/notification-not-found-error"
 
 describe('Cancel Notification', () => {
   it('should be possible cancel a notification', async () => {

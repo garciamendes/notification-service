@@ -23,4 +23,11 @@ export class NotificationInMemoryRepository implements NotificationRepository {
     if (notificationIndex >= 0)
       this.notifications[notificationIndex] = notification
   }
+
+  async findCountByRecipientId(recipientId: string) {
+    const countNotifications = this.notifications.filter(
+      notification => notification.recipientId === recipientId).length
+
+    return countNotifications
+  }
 }

@@ -31,4 +31,8 @@ export class PrismaNotificationRepository implements NotificationRepository {
   async save(notification: Notification): Promise<void> {
     throw new Error("Method not implemented.");
   }
+
+  async findCountByRecipientId(recipientId: string): Promise<number> {
+    throw new Error("Method not implemented.");
+  }
 }

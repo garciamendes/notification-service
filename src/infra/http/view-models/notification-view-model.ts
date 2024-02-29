@@ -6,7 +6,10 @@ export class NotificationViewModel {
       id: notification.notification_id,
       content: notification.content.value,
       category: notification.category,
-      recipientId: notification.recipientId
+      recipientId: notification.recipientId,
+      created: notification.created,
+      readed: notification.readed,
+      canceled: notification.canceled
     }
   }
 }

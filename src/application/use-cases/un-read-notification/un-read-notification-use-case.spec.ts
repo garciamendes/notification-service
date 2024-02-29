@@ -2,17 +2,18 @@ import { NotificationInMemoryRepository } from "@test/in-memory-repository/notif
 import { Content } from "@application/entities/content/content"
 import { Notification } from "@application/entities/notification/notification"
 import { NotificationNotFoundError } from "../../../utils/errors/notification-not-found-error"
-import { unReadNotificationUseCase } from "./un-read-notification-use-case"
+import { UnReadNotificationUseCase } from "./un-read-notification-use-case"
 
 describe('Unread Notification', () => {
   it('should be possible unread a notification', async () => {
     const notificationRepository = new NotificationInMemoryRepository()
-    const unReadNotification = new unReadNotificationUseCase(notificationRepository)
+    const unReadNotification = new UnReadNotificationUseCase(notificationRepository)
 
     const notification = new Notification({
       category: 'teste',
       content: new Content('test content'),
-      recipientId: 'test_recipient_id'
+      recipientId: 'test_recipient_id',
+      readed: new Date()
     })
 
     await notificationRepository.create(notification)
@@ -23,7 +24,7 @@ describe('Unread Notification', () => {
 
   it('should not be able to unread a notification when it does not exist', async () => {
     const notificationRepository = new NotificationInMemoryRepository()
-    const readNotification = new unReadNotificationUseCase(notificationRepository)
+    const readNotification = new UnReadNotificationUseCase(notificationRepository)
 
     expect(async () => {
       return readNotification.execute({ notificationId: 'fake_notification_id' })
